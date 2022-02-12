@@ -1,0 +1,17 @@
+; Support library for MaL-compliant behaviour
+
+;; Test special syntax reference:
+;; /^$/ :: Empty line (ignore)
+;; /^;;/ :: Comment
+;; /^;>>> \w+=\+/ :: Directive
+;; /^;=>/ :: Expected result
+;; /^;\// :: Expected console output
+;; /^;&/ :: Expected error
+
+(def &IgnoreDecorationsInBuiltinForms true)
+(def &CompatibleLetSyntax true)
+
+(def count (let* (oldCount count)
+	(fn* [list] (if (nil? list) 0 (oldCount list)))))
+
+(def load-file (fn (fname) (do (import-script fname) nil)))

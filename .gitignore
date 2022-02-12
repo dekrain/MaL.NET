@@ -1,0 +1,5 @@
+# Output directories
+obj/
+bin/
+
+.mal-history

@@ -1,0 +1,7 @@
+;; MaL bootstrap script
+
+; (def not (fn (a) (if a false true)))
+(def import-script (fn (fname) (eval (read-script (slurp fname)))))
+
+; TODO: Guarrantee thread-atomicity
+(def swap! (fn (atom func & args) (reset! atom (apply func (cons @atom args)))))
